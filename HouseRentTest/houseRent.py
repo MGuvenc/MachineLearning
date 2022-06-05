@@ -23,7 +23,7 @@ print(data.head())
 print(data.isnull().sum())
 # data = data.dropna() If data is null
 
-# SPLIT DATA#
+# SPLIT DATA
 x = np.array(data.drop(['rent amount'], 1))
 y = np.array(data['rent amount'])
 
@@ -34,3 +34,11 @@ xTrain, xTest, yTrain, yTest = sklearn.model_selection.train_test_split(x, y, te
 
 print('XTest', xTest.shape)
 print('XTrain', xTrain.shape)
+
+# TRAINING DATA
+model = linear_model.LinearRegression()
+model.fit(xTrain, yTrain)
+accuracy = model.score(xTest, yTest)
+print('Coefficients: ', model.coef_)
+print('Intercept: ', model.intercept_)
+print('Accuracy: %', round(accuracy*100, 3))
