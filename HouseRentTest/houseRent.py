@@ -1,6 +1,8 @@
 import pandas as pd
 import numpy as np
-from sklearn import preprocessing
+import sklearn
+
+from sklearn import preprocessing, linear_model
 
 # IMPORT DATA
 data = pd.read_csv('houses_to_rent.csv')
@@ -27,3 +29,8 @@ y = np.array(data['rent amount'])
 
 print('X', x.shape)
 print('Y', y.shape)
+
+xTrain, xTest, yTrain, yTest = sklearn.model_selection.train_test_split(x, y, test_size=0.2, random_state=10)
+
+print('XTest', xTest.shape)
+print('XTrain', xTrain.shape)
