@@ -42,3 +42,11 @@ accuracy = model.score(xTest, yTest)
 print('Coefficients: ', model.coef_)
 print('Intercept: ', model.intercept_)
 print('Accuracy: %', round(accuracy*100, 3))
+
+# Manuel Test
+testVals = model.predict(xTest)
+print(testVals.shape)
+error = []
+for i, testVal in enumerate(testVals):
+    error.append(yTest[i] - testVal)
+    print(f'Actual: {yTest[i]}, Prediction: {int(testVal)}, Error: {int(error[i])}')
